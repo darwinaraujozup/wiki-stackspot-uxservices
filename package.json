@@ -1,0 +1,19 @@
+{
+  "name": "wikiweb",
+  "version": "0.0.1",
+  "displayName": "wikiweb",
+  "description": "Stack Spot",
+  "publisher": "ZupInnovation",
+  "scripts": {
+    "start": "hugo serve",
+    "dependencies": "npm i && git submodule init && git submodule update",
+    "build": "hugo --ignoreCache --gc"
+  },
+  "dependencies": {
+    "postcss": "^8.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss-cli": "^8.3.1"
+  }
+}
