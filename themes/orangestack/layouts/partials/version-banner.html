@@ -1,0 +1,37 @@
+<div class="alert alert-warning" role="alert" id="version-banner"></div>
+
+<script>
+  (function () {
+
+    const regex = /[(V|v)][0-9]+[.][0-9]+[.][0-9]+/g
+    const currentVersion = document.URL.match(regex)?.[0];
+    const url = "https://api.github.com/repos/stack-spot/orange-docs-org/releases"
+    const banner = document.getElementById("version-banner");
+
+    try {
+      const xhttp = new XMLHttpRequest()
+      xhttp.open("GET", url, false)
+
+      if ("{{ .Site.Params.github_personal_token }}") {
+        xhttp.setRequestHeader('Authorization', 'token ' + "{{ .Site.Params.github_personal_token }}");
+      }
+      xhttp.send()
+      const lastVersion = [...new Set(JSON.parse(xhttp.responseText).map(e => e.tag_name))]?.[0];
+      
+      if (lastVersion && currentVersion && lastVersion !== currentVersion) {
+        const title = document.createElement('h6')
+        title.innerHTML = `⚠️ Você está lendo uma versão antiga da documentação`;
+        title.style = 'font-weight: bold';
+
+        const text = document.createElement('p')
+        text.innerHTML = `A versão ${currentVersion} não está sendo atualizada e pode conter funcionalidades defasadas. 
+        Acesse a <a href='{{ "${lastVersion}/docs" | relLangURL }}'>última versão da documentação.</a>`
+        banner.append(title, text)
+      } else {
+        banner.remove();
+      }
+    } catch (error) {
+      banner.remove();
+    }
+  })();
+</script>

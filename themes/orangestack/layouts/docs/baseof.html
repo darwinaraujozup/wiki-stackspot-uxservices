@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" class="no-js">
+
+<head>
+  {{ partial "head.html" . }}
+</head>
+
+<body class="td-{{ .Kind }}">
+  <header>
+    {{ partial "navbar.html" . }}
+  </header>
+  <div class="container-fluid td-outer">
+    <div class="td-main">
+      <div class="row flex-xl-nowrap">
+        <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          {{ partial "sidebar.html" . }}
+        </aside>
+
+        <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+          {{ partial "page-meta-links.html" . }}
+          {{ partial "toc.html" . }}
+          {{ partial "taxonomy_terms_clouds.html" . }}
+        </aside>
+
+        <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+          
+          {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
+          
+          {{ partial "version-banner.html" . }}
+          
+          {{ if .Params.hasHomeBlocks }}
+          <div class="td-content">
+            <h1>{{ i18n "hotspot_1" }}</h1>
+            
+            <div class="section-index">
+              <hr class="panel-line" />
+
+              <div class="row">
+                {{ with .Site.GetPage "docs/STK CLI/installation/_index.md" }}
+
+                <div class="col-12 col-md-4">
+                  <div class="entry">
+                    <h5>
+                      <a href='{{ .Permalink | relLangURL }}'>{{ .Title }}</a>
+                    </h5>
+
+                    <p>{{ .Description }}</p>
+                  </div>
+                </div>
+
+                {{ end }}
+
+                {{ with .Site.GetPage "docs/User Guide/howto-create-app.md" }}
+
+                <div class="col-12 col-md-4">
+                  <div class="entry">
+                    <h5>
+                      <a href='{{ .Permalink | relLangURL }}'>{{ .Title }}</a>
+                    </h5>
+
+                    <p>{{ .Description }}</p>
+                  </div>
+                </div>
+
+                {{ end }}
+
+                {{ with .Site.GetPage "docs/User Guide/_index.md" }}
+
+                <div class="col-12 col-md-4">
+                  <div class="entry">
+                    <h5>
+                      <a href='{{ .Permalink | relLangURL }}'>{{ .Title }}</a>
+                    </h5>
+
+                    <p>{{ .Description }}</p>
+                  </div>
+                </div>
+
+                {{ end }}
+
+                {{ with .Site.GetPage "docs/overview.md" }}
+
+                <div class="col-12 col-md-4">
+                  <div class="entry">
+                    <h5>
+                      <a href='{{ .Permalink | relLangURL }}'>{{ .Title }}</a>
+                    </h5>
+
+                    <p>{{ .Description }}</p>
+                  </div>
+                </div>
+
+                {{ end }}
+
+                {{ with .Site.GetPage "docs/STK CLI/_index.md" }}
+
+                <div class="col-12 col-md-4">
+                  <div class="entry">
+                    <h5>
+                      <a href='{{ .Permalink | relLangURL }}'>{{ .Title }}</a>
+                    </h5>
+
+                    <p>{{ .Description }}</p>
+                  </div>
+                </div>
+
+                {{ end }}
+
+              </div>
+              <hr>
+              <div class="row">
+                {{ with .Site.GetPage "docs/Creators Guide/_index.md" }}
+
+                <div class="col-12 col-md-4">
+                  <div class="entry">
+                    <h5>
+                      <a href='{{ .Permalink | relLangURL }}'>{{ .Title }}</a>
+                    </h5>
+
+                    <p>{{ .Description }}</p>
+                  </div>
+                </div>
+
+                {{ end }}
+
+                {{ with .Site.GetPage "docs/glossary.md" }}
+
+                <div class="col-12 col-md-4">
+                  <div class="entry">
+                    <h5>
+                      <a href='{{ .Permalink | relLangURL }}'>{{ .Title }}</a>
+                    </h5>
+
+                    <p>{{ .Description }}</p>
+                  </div>
+                </div>
+
+                {{ end }}
+
+                {{ with .Site.GetPage "docs/faq.md" }}
+
+                <div class="col-12 col-md-4">
+                  <div class="entry">
+                    <h5>
+                      <a href='{{ .Permalink | relLangURL }}'>{{ .Title }}</a>
+                    </h5>
+
+                    <p>{{ .Description }}</p>
+                  </div>
+                </div>
+                {{ end }}
+                
+              </div>
+
+              <hr>
+              <div class="row">
+                {{ with .Site.GetPage "docs/Release Notes/_index.md" }}
+
+                <div class="col-12 col-md-4">
+                  <div class="entry">
+                    <h5>
+                      <a href='{{ .Permalink | relLangURL }}'>{{ .Title }}</a>
+                    </h5>
+
+                    <p>{{ .Description }}</p>
+                  </div>
+                </div>
+
+                {{ end }}
+              </div>
+            </div>
+          </div>
+          {{ else }}
+          {{ block "main" . }}{{ end }}
+          {{ end }}
+        </main>
+      </div>
+    </div>
+    {{ partial "footer.html" . }}
+  </div>
+  {{ partial "scripts.html" . }}
+</body>
+
+</html>
