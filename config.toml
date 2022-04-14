@@ -1,4 +1,4 @@
-baseURL = "https://docs.stackspot.com.br/"
+baseURL = "https://darwinaraujozup.github.io/wiki-stackspot-uxservices"
 
 # Should remove this after finish index page
 refLinksErrorLevel = "WARNING"
@@ -7,7 +7,7 @@ current_version = ""
 
 title = "StackSpot"
 
-publishDir = "./latest"
+publishDir = "./docs"
 
 enableRobotsTXT = true
 
